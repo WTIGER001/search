@@ -1,0 +1,6 @@
+\[search-instance-name]
+    \configuration
+        \datatypes
+        \datafields
+            id = document
+        \items

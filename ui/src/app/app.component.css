@@ -1,0 +1,30 @@
+example-sidenav {
+  height: 100%;
+}
+
+example-sidenav-content {
+  height: 100%;
+}
+
+.navbar-brand {
+  padding-left: 10px;
+}
+
+.bg-inverse {
+  background-color: #373a3c !important;
+}
+
+.stylish-input-group .input-group-addon {
+  background: white !important;
+}
+
+.stylish-input-group .form-control {
+  border-right: 0;
+  box-shadow: 0 0 0;
+  border-color: #ccc;
+}
+
+.stylish-input-group button {
+  border: 0;
+  background: transparent;
+}

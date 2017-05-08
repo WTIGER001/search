@@ -1,0 +1,30 @@
+{
+    "id": "ba622de0-5600-4fac-a9bb-1cee633eec25",
+    "name": "My Sample Configuration",
+    "description": "",
+    "owned-by": "Bauer, John",
+    "shared-with": "Everyone",
+    "map-table-split": [
+        50,
+        50
+    ],
+    "filters": {
+        "catalog.standard.collectiondate": {
+            "label": "Collection Date",
+            "editable": true,
+            "visible": true
+        }
+    },
+    "filter-values": {
+        "catalog.standard.collectiondate": {
+            "operator": "Last N",
+            "value": "4",
+            "unit": "days"
+        },
+        "catalog.standard.filetype": {
+            "operator": "Equals",
+            "value": "ABC HD5"
+        }
+    },
+    "tabular-columns": {}
+}

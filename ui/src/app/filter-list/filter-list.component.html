@@ -1,0 +1,6 @@
+<div *ngIf="cfg" class="filters">
+  <div *ngFor="let f of cfg.filters">
+    <span>{{f.label}}:</span>
+    <app-filter-host [filter]="f"></app-filter-host>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: Target Manager
+  description: >-
+    The Target Manager API allows callers to manage the definitions of targets and control
+    the automated push to other instances via a drop directory approach
+paths:
+  /datafields:
+    get:
+      description: |
+        Gets `Target` objects with optional filtering parameters
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/datafield'
+definitions:
+  datafield:
+    description: Defines a Single Data Field
+    type: object
+    properties:
+      id: 
+        type: string
+      description:
+        type: string
+      catalog-name: 
+        type: string
+      datatype:
+        type: string
+      label:
+        type: string
+      filter : 
+        $ref : '#/definitions/filter'
+      column:
+        $ref : '#/definitions/column'
+  filter:
+    type: object
+    properties:
+      control:
+        type: string
+      order :
+        type: integer
+        format : int64
+      default-value :
+        $ref : '#/definitions/field-value'
+  field-value :
+    type : object
+    properties :
+      operator : 
+        type : string
+      value :
+        type : string
+      unit :
+        type : string
+      values : 
+        type : array
+        items: 
+          type : string
+  column : 
+    type : object
+    properties:
+      visible : 
+        type : boolean
+      order: 
+        type : integer
+        format : int64
+      sortable: 
+        type : boolean
+      comparator:
+        type : string
+ 

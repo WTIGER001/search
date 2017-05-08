@@ -1,0 +1,289 @@
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: Target Manager
+  description: >-
+    The Target Manager API allows callers to manage the definitions of targets and control
+    the automated push to other instances via a drop directory approach
+paths:
+  /targets:
+    get:
+      description: |
+        Gets `Target` objects with optional filtering parameters
+      parameters:
+        - name: name
+          in: query
+          description: >-
+            The part of a name to match. If this 'name' is contained in any of
+            the target's names then the target is returned
+          required: false
+          type: string
+        - name: tag
+          in: query
+          description: >-
+            A comma separated list of the tags to include targets from. This
+            list is exclusive ALL tags must be on the target to get returned
+          required: false
+          type: string
+        - name: classification
+          in: query
+          description: >-
+            A comma separated list of the classifications to include targets
+            from. All classifications must be included in a target to get
+            returned
+          required: false
+          type: string
+        - name: source
+          in: query
+          description: >-
+            A comma separated list of the sources to include targets from. All
+            sources must be included in a target to get returned
+          type: string
+        - name: active
+          in: query
+          description: >-
+            Identifies if Active, Inactive or both types of targets are
+            returned, defaults to 'active'
+          type: string
+          enum:
+            - active
+            - inactive
+            - both
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/targets'
+    post:
+      tags:
+        - targets
+      description: Add a new target
+      operationId: addTarget
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: target object that needs to be added
+          required: false
+          schema:
+            $ref: '#/definitions/target'
+      responses:
+        '201':
+          description: Object Created
+          schema:
+            $ref: '#/definitions/target'
+        '405':
+          description: Invalid input
+    patch:
+      tags: 
+        - targets
+      description: Updates multiple targets
+      operationId: updateTargets
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: targets
+          description: targets
+          required: true
+          schema:
+            $ref: '#/definitions/targets'
+      responses:
+        '200':
+          description: Success
+        '405':
+          description: Invalid input
+  /targets/{id}:
+    get:
+      tags:
+        - target
+      description: |
+        Gets a single target object identified by the ID
+      operationId: getTargetsById
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: Id of target that needs to be fetched
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful
+          schema:
+            $ref: '#/definitions/target'
+    delete:
+      tags:
+        - target
+      description: Updates a target
+      operationId: deleteTarget
+      parameters:
+        - in: path
+          name: id
+          description: Id of target that needs to be fetched
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Success
+        '405':
+          description: Invalid input      
+  /destinations:
+    get:
+      tags:
+        - destinations
+      description: Retrieves all destinations that can be pushed to
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/destinations'
+    post:
+      tags: 
+        - destinations
+      description: Creates a new destination
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: destination
+          required: true
+          schema:
+            $ref: '#/definitions/destination'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/destination'
+  /destinations/{name}:
+    put:
+      tags: 
+        - destinations
+      description: Updates a destination
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: name
+          description: name of the destination to update
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: destination
+          required: true
+          schema:
+            $ref: '#/definitions/destination'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/destination'
+        '405':
+          description: Invalid input
+    delete: 
+      tags: 
+        - destinations
+      description: Deletes a destination
+      parameters:
+        - in: path
+          name: name
+          description: name of the destination to delete
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '405':
+          description: Invalid input
+  /actions/push:
+      post:
+        tags: 
+          - actions
+          - destinations
+        consumes:
+          - application/json
+        produces:
+          - application/json  
+        parameters:
+          - in: body
+            name: body
+            description: Destination Names
+            required: true
+            schema:
+              $ref: '#/definitions/push'
+        responses:
+          '200':
+            description: Successful response
+          '405':
+            description: Invalid input
+definitions:
+  targets:
+    type: array
+    items:
+      $ref: '#/definitions/target'
+  target:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      active:
+        type: boolean
+      tags:
+        type: array
+        items:
+          type: string
+      names:
+        type: array
+        items:
+            $ref: '#/definitions/target-name'
+  target-name:
+    type: object
+    properties:
+      name:
+        type: string
+      source:
+        type: string
+      classification:
+        type: string
+  destinations:
+    type: array
+    items:
+      $ref: '#/definitions/destination'
+  destination:
+    type: object
+    properties:
+      name:
+        type: string
+      location:
+        description: Where to drop the file
+        type: string
+      classifications:
+        type: array
+        items:
+          type: string
+      last-push:
+        type: integer
+        format: int64
+  push:
+    type: object
+    properties:
+      data: 
+        type: array
+        description: Array of destination names to push
+        items:
+          type: string

@@ -1,0 +1,9 @@
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.boxme {
+  overflow-y: auto;
+  height: 400px;
+  border: 1px solid black;
+}

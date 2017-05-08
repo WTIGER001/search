@@ -1,0 +1,141 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.1",
+        "title": "Search API",
+        "description": "The Search API"
+    },
+    "paths": {
+        "/search": {
+            "get": {
+                "description": "Issues a search",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Query"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful query",
+                        "schema": {
+                            "$ref": "#/definitions/Results"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Query": {
+            "type": "object",
+            "properties": {
+                "filterValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/FilterValue"
+                    }
+                },
+                "sort": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SortItem"
+                    }
+                },
+                "paging": {
+                    "type": "object",
+                    "properties": {
+                        "pageSize": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "page": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                },
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Column"
+                    }
+                }
+            }
+        },
+        "FilterValue": {
+            "type": "object",
+            "properties": {
+                "operator": {
+                    "type": "string",
+                    "enum": [
+                        "eq",
+                        "gt",
+                        "get",
+                        "lt",
+                        "lte",
+                        "between",
+                        "last n",
+                        "within radius",
+                        "in box"
+                    ]
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": true
+        },
+        "SortItem": {
+            "type": "object",
+            "properties": {
+                "field": {
+                    "type": "string"
+                },
+                "direction": {
+                    "type": "string",
+                    "enum": [
+                        "Ascending",
+                        "Descending"
+                    ]
+                }
+            }
+        },
+        "Column": {
+            "type": "object",
+            "properties": {
+                "field": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "Results": {
+            "type": "object",
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Column"
+                    }
+                },
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResultItem"
+                    }
+                }
+            }
+        },
+        "ResultItem": {
+            "type": "object",
+            "additionalProperties": true
+        }
+    }
+}

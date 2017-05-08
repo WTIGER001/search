@@ -1,0 +1,13 @@
+// Psuedo Code for Filter 
+
+Get the Configuration
+For Each "Filter" in the Configuration
+    Get the 'Filter Control' Associated with the Filter Id (in the datafield)
+    Add the component to the view
+    Bind the component to the datafield in the query object
+For each "Filter-Value" in the Configuration
+    Get the "Query Object"
+    Add the "Filter-Value" (this may cause the filter-control to update)
+
+
+  

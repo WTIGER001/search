@@ -1,0 +1,108 @@
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: Target Manager
+  description: >-
+    The Target Manager API allows callers to manage the definitions of targets and control
+    the automated push to other instances via a drop directory approach
+paths:
+  /search:
+    get:
+      description: |
+        Issues a search
+      parameters:
+        - name: query
+          in: body
+          schema: 
+            $ref: '#/definitions/query'
+      responses: 
+        '200':
+          description: Successful query
+          schema: 
+            $ref: '#/definitions/results'
+definitions:
+  query:
+    type: object
+    properties: 
+      filterValues:
+        type: array
+        items:  
+          $ref: '#/definitions/filterValue'  
+      sort: 
+        type: array
+        items:
+          $ref: '#/definitions/sortItem'
+      paging: 
+        type: object
+        properties:
+          pageSize: 
+            type: integer
+            format: int64
+          page: 
+            type: integer
+            format: int64
+      columns: 
+        type: array
+        items:
+          $ref: '#/definitions/column'
+  filterValue: 
+    type: object  
+    properties:
+      operator:
+        type: string
+        enum:
+          - eq
+          - gt
+          - get
+          - lt
+          - lte
+          - between
+          - last n 
+          - within radius
+          - in box
+      value:
+        type: string
+      unit:
+        type: string
+    additionalProperties: true
+  sortItem:
+    type: object
+    properties:
+      field: 
+        type: string
+      direction:
+        type: string
+        enum:
+          - Ascending
+          - Descending
+  paging:
+    type: object
+    properties:
+      pageSize: 
+        type: integer
+        format: int64
+      page: 
+        type: integer
+        format: int64
+  column:
+    type: object
+    properties: 
+      field: 
+        type: string
+      order: 
+        type: integer
+        format: int64
+  results:
+    type: object
+    properties:
+      columns: 
+        type: array
+        items:
+          $ref: '#/definitions/column'
+      results:
+        type: array
+        items: 
+          $ref: '#/definitions/resultItem'
+  resultItem:
+    type: object
+    additionalProperties: true
