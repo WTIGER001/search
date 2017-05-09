@@ -1,5 +1,5 @@
-import { filterValue } from '../swagger/models';
+import { FilterValue } from '../swagger/models';
 
 export interface FilterControl {
-    setValue(v: filterValue)
+    setValue(v: FilterValue)
 }

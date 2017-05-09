@@ -3,12 +3,12 @@ Simple Elastic Search prototype to implement some simple behaviors
 
 ## Project Plan
 
-* Build sample database and use JSON-Server (1h)
-* Get Filters listing (4h)
-    * Text Filter
-    * Select One Filter
-* Get Filter Values listing (2h)
-* Show Basic Results Table  (4h)
+* ~Build sample database and use JSON-Server (1h)~
+* ~Get Filters listing (4h)~
+    * ~Text Filter~
+    * ~Select One Filter~
+* ~Get Filter Values listing (2h)~
+* ~Show Basic Results Table  (4h)~
     * Columns from Configuration
     * Paging Controls 
 * Issue mock search (always same results) with JSON Server (4h)

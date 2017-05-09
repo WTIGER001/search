@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, AfterViewInit, ViewChild, ComponentFactoryResolver, ViewContainerRef, Type, OnChanges } from '@angular/core';
-import { ConfigurationService } from '../configuration.service'
-import { UserService } from '../user.service'
+import { ApiService } from '../api.service'
 import { Configuration, Filter } from '../models/configuration'
 import { FilterControl } from '../filters/filter-control'
 import { TextControlComponent } from '../filters/text-control/text-control.component'
@@ -21,8 +20,7 @@ export class FilterHostComponent implements AfterViewInit, OnInit {
     public value: string
     private filterControls = {};
     constructor(
-        private _cfgService: ConfigurationService,
-        private _userService: UserService,
+        private _api: ApiService,
         private _componentFactoryResolver: ComponentFactoryResolver,
         private _viewRef: ViewContainerRef) {
 
@@ -48,7 +46,7 @@ export class FilterHostComponent implements AfterViewInit, OnInit {
         // Get the id
         if (controlId == null) {
             let id = f.datafieldId
-            controlId = this._cfgService.getFilterControl(id)
+            controlId = this._api.getFilterControl(id)
         }
 
         // Look up the control

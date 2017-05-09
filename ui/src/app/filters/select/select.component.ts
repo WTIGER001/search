@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from "rxjs/Observable";
-import { OptionsService } from "../../options.service"
+import { ApiService } from "../../api.service"
 
 @Component({
   selector: 'app-select',
@@ -13,7 +13,7 @@ export class SelectComponent implements OnInit {
   valueName: string
 
   v
-  constructor(private _optionSvc: OptionsService) {
+  constructor(private api: ApiService) {
     this.v = {
       operator: "eq",
       value: "US"
@@ -21,7 +21,7 @@ export class SelectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.options = this._optionSvc.getOptions("name", "code");
+    this.options = this.api.getOptions("name", "code");
   }
 
   @Input() set value(value: boolean) {

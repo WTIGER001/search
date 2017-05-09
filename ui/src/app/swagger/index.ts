@@ -1,7 +1,7 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
-import { query, filterValue, sortItem, column, results, resultItem } from './models';
+import { Query, FilterValue, SortItem, Column, Results, ResultItem } from './models';
 import 'rxjs/Rx';
 
 @Injectable()
@@ -35,7 +35,7 @@ export class ApiClientService {
 	* @param {query} query - The Target Manager API allows callers to manage the definitions of targets and control the automated push to other instances via a drop directory approach
 	* 
 	*/
-	public getSearch(query: query) {
+	public getSearch(query: Query) {
 		let payload = {};
 		let queryParameters = {};
 		let headers = new Headers();

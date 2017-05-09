@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from "rxjs/Observable";
+import { ApiService } from '../api.service'
+import { Query } from '../swagger/models'
 
 @Component({
   selector: 'app-results-table',
@@ -7,33 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsTableComponent implements OnInit {
 
-  rows = [
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-  ];
+  rows = []
   selected = []
+  limit = 10
   actionsEnabled = false
+  @Input() q: Query
 
-  constructor() { }
+  constructor(private _api: ApiService) {
+    this._api.results.subscribe(r => {
+      this.rows.splice(0, this.rows.length)
+      this.rows.push(...r)
+    })
+  }
 
   ngOnInit() {
   }
@@ -46,4 +34,13 @@ export class ResultsTableComponent implements OnInit {
     this.actionsEnabled = this.selected.length > 0
   }
 
+  /**
+  * Populate the table with new data based on the page number
+  * @param page The page to select
+  */
+  setPage(pageInfo) {
+    console.log("Setting Page to " + pageInfo.offset);
+    this.q.page = pageInfo.offset
+    //this._api.search(this.q)
+  }
 }

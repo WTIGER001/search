@@ -1,9 +1,9 @@
 /* tslint:disable */
-import { column } from "./column"
-import { resultItem } from "./resultItem"
+import { Column } from "./column"
+import { ResultItem } from "./resultItem"
 
-export class results {
+export class Results {
 
-		columns: column[];
-		results: resultItem[];
+	columns: Column[];
+	results: ResultItem[];
 }

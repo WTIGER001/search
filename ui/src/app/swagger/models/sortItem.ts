@@ -1,7 +1,7 @@
 /* tslint:disable */
 
-export class sortItem {
-		field: string;
-		direction: string;
+export class SortItem {
+	field: string;
+	direction: string;
 
 }

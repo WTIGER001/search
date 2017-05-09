@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SidebarModule } from 'ng-sidebar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,13 +17,11 @@ import { FilterListComponent } from './filter-list/filter-list.component';
 import { FilterHostComponent } from './filter-list/filter-host.component';
 import { ToggleComponent } from './filters/toggle/toggle.component';
 import { SelectComponent } from './filters/select/select.component';
+import { ResultsTableComponent } from './results-table/results-table.component';
 
 // Services
-import { ConfigurationService } from './configuration.service';
-import { UserService } from './user.service';
-import { OptionsService } from './options.service';
-import { ResultsTableComponent } from './results-table/results-table.component';
-import { DemoComponent } from './demo'
+import { ApiService } from './api.service';
+
 
 @NgModule({
   declarations: [
@@ -36,8 +33,7 @@ import { DemoComponent } from './demo'
     FilterHostComponent,
     ToggleComponent,
     SelectComponent,
-    ResultsTableComponent,
-    DemoComponent
+    ResultsTableComponent
   ],
   imports: [
     BrowserModule,
@@ -46,12 +42,11 @@ import { DemoComponent } from './demo'
     HttpModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MaterialModule,
     SidebarModule.forRoot(),
     NgbModule.forRoot()
   ],
   entryComponents: [TextControlComponent, ToggleComponent, SelectComponent],
-  providers: [ConfigurationService, UserService, OptionsService],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

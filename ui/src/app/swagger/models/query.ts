@@ -1,12 +1,12 @@
 /* tslint:disable */
-import { filterValue } from "./filterValue"
-import { sortItem } from "./sortItem"
-import { column } from "./column"
+import { FilterValue } from "./filterValue"
+import { SortItem } from "./sortItem"
+import { Column } from "./column"
 
-export class query {
-		paging: object;
-
-		filterValues: filterValue[];
-		sort: sortItem[];
-		columns: column[];
+export class Query {
+	page: number = 1;
+	limit: number = 100;
+	filterValues: FilterValue[];
+	sort: SortItem[];
+	columns: Column[];
 }

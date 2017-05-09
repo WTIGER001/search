@@ -1,7 +1,6 @@
 /* tslint:disable */
 
-export class column {
-		field: string;
-		order: number;
-
+export class Column {
+	field: string;
+	order: number;
 }

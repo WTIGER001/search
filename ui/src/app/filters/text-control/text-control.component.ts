@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { FilterControl } from '../filter-control';
-import { filterValue } from '../../swagger/models';
+import { FilterValue } from '../../swagger/models';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { filterValue } from '../../swagger/models';
   styleUrls: ['./text-control.component.css']
 })
 export class TextControlComponent implements OnInit {
-  v: filterValue
+  v: FilterValue
   constructor() {
     this.v = {
       operator: "eq",

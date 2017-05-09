@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-export class filterValue {
+export class FilterValue {
 	operator: string;
 	value: string;
 	unit?: string;

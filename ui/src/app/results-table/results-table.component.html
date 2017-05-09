@@ -1,25 +1,27 @@
 <div class="m-2 boxme">
 
-  <div class="btn-group btn-group-sm pull-right" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Left</button>
-    <button type="button" class="btn btn-secondary">Middle</button>
-    <button type="button" class="btn btn-secondary">Right</button>
-    <div ngbDropdown class="d-inline-block btn-group-sm">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-      <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-        <button class="dropdown-item">Action - 1</button>
-        <button class="dropdown-item">Another Action</button>
-        <button class="dropdown-item">Something else is here</button>
-      </div>
-    </div>
-  </div>
+  <nav class="navbar navbar-toggleable-md " style="border-radius:0px;">
+    <span class="navbar-brand mr-auto" href="#">Results</span>
+    <ul class="nav navbar-nav ">
+      <li class="nav-item">
+        <a class="nav-link" href="https://medium.com/@beeman"><i class="fa fa-medium" aria-hidden="true"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://twitter.com/@beeman_nl"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/beeman"><i class="fa fa-github" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+  </nav>
 
-  <ngx-datatable [rows]="rows" [scrollbarV]="true" [selectionType]="'checkbox'" (select)='onSelect($event)'>
+  <ngx-datatable class=" boxme " [rows]="rows" [scrollbarV]="false" [selectionType]="'checkbox'" [limit]="limit" (select)='onSelect($event)'
+    [headerHeight]="30" [footerHeight]="0">
     <ngx-datatable-column [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" [headerCheckboxable]="true"
       [checkboxable]="true">
     </ngx-datatable-column>
     <ngx-datatable-column name="Name"></ngx-datatable-column>
-    <ngx-datatable-column name="Gender"></ngx-datatable-column>
-    <ngx-datatable-column name="Company"></ngx-datatable-column>
+    <ngx-datatable-column name="Balance"></ngx-datatable-column>
+    <ngx-datatable-column name="Email"></ngx-datatable-column>
   </ngx-datatable>
 </div>

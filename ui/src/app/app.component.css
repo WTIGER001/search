@@ -28,3 +28,7 @@ example-sidenav-content {
   border: 0;
   background: transparent;
 }
+
+.cont {
+  height: 100%;
+}

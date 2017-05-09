@@ -1,8 +1,6 @@
-import { filterValue, column } from '../swagger/models'
+import { FilterValue, Column } from '../swagger/models'
 
 export class Configuration {
-
-
     id: string
     name: string
     description: string
@@ -10,9 +8,8 @@ export class Configuration {
     sharedWith: string
     mapTableSplit: number[]
     filters: Filter[]
-    filterValues: filterValue[]
-    columns: column[]
-
+    filterValues: FilterValue[]
+    columns: Column[]
 }
 
 export class Filter {

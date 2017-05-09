@@ -1,5 +1,5 @@
 /* tslint:disable */
 
-export class resultItem {
+export class ResultItem {
 
 }

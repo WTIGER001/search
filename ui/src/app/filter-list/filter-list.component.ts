@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from "rxjs/Observable";
-import { ConfigurationService } from '../configuration.service'
-import { UserService } from '../user.service'
+import { ApiService } from '../api.service'
 import { Configuration, Filter } from '../models/configuration'
-import { query } from '../swagger/models'
+import { Query } from '../swagger/models'
 import { FilterControl } from '../filters/filter-control'
 import { TextControlComponent } from '../filters/text-control/text-control.component'
 
@@ -19,26 +18,19 @@ export class FilterListComponent implements OnInit {
   public showAll: boolean
   // public filters: Filter[]
   private cfg: Configuration
-  @Input() q: query
-
+  @Input() q: Query
 
   constructor(
-    private _cfgService: ConfigurationService,
-    private _userService: UserService) {
+    private api: ApiService) {
   }
 
   ngOnInit() {
     // this.cfg = this._userService.getCurrentConfiguration()
     // this.filters = this.cfg.filters
-    this._userService.getConfig().subscribe(cfg => {
+    this.api.getConfig().subscribe(cfg => {
       console.log("Setting CFG " + JSON.stringify(cfg));
       this.cfg = cfg
     });
   }
-
-  public get configuration(): Observable<Configuration> {
-    return this._cfgService.getConfiguration(this._userService.user.defaultConfiguration)
-  }
-
 
 }
