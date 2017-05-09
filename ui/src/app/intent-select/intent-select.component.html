@@ -1,0 +1,14 @@
+<div ngbDropdown class="d-inline-block">
+  <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBasic1">
+
+    <span *ngFor="let item of actions">
+       <button *ngIf="!isDivider(item)"  [disabled]="isDisabled(item)" placement="left" [ngbTooltip]="item.tooltip" class="dropdown-item" (click)="handleIntentAction(item)">
+         <i [class]="item.icon"></i>  {{item.name}}
+      </button>
+      <div *ngIf="isDivider(item)" class="dropdown-divider"></div>
+    </span>
+    <div class="dropdown-divider"></div>
+    <button class="dropdown-item  ml-2">Manage Favorites...</button>
+  </div>
+</div>

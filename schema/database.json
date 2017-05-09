@@ -1,4 +1,49 @@
 {
+    "intents": [{
+            "name": "Download Zip",
+            "icon": "fa fa-download",
+            "tooltip": "Download files as a zip",
+            "url": "https://intents",
+            "noun": "ResourceSet",
+            "verb": "Disseminate"
+        }, {
+            "name": "Order Files",
+            "icon": "fa fa-cloud-download",
+            "tooltip": "Order files",
+            "url": "https://intents",
+            "noun": "ResourceSet",
+            "verb": "Disseminate"
+        }, {
+            "name": "Create GeoRSS",
+            "icon": "fa fa-rss-square",
+            "tooltip": "Create a GeoRSS feed",
+            "url": "https://intents",
+            "noun": "Configuration",
+            "verb": "Disseminate"
+        }, {
+            "name": "Analyze in OPIR Events",
+            "icon": "fa fa-line-chart",
+            "tooltip": "Order files",
+            "url": "https://intents",
+            "noun": "ResourceSet",
+            "verb": "Analyze"
+        }, {
+            "name": "Process in Algorithm Bank",
+            "icon": "fa fa-bank",
+            "tooltip": "Process in Algorithm Bank",
+            "url": "https://intents",
+            "noun": "ResourceSet",
+            "verb": "Process"
+        }, {
+            "name": "Convert to Shape",
+            "icon": "fa fa-gears",
+            "tooltip": "Process in Algorithm Bank",
+            "url": "https://intents",
+            "noun": "ResourceSet",
+            "verb": "Convert"
+        }
+
+    ],
     "users": [{
         "id": "ft1ab",
         "name": "John Bauer",

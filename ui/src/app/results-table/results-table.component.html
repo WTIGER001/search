@@ -2,6 +2,7 @@
 
   <nav class="navbar navbar-toggleable-md " style="border-radius:0px;">
     <span class="navbar-brand mr-auto" href="#">Results</span>
+    <label>Actions ({{selected.length}})</label>
     <ul class="nav navbar-nav ">
       <li class="nav-item">
         <a class="nav-link" href="https://medium.com/@beeman"><i class="fa fa-medium" aria-hidden="true"></i></a>
@@ -13,6 +14,7 @@
         <a class="nav-link" href="https://github.com/beeman"><i class="fa fa-github" aria-hidden="true"></i></a>
       </li>
     </ul>
+    <app-intent-select [selected]="selected"></app-intent-select>
   </nav>
 
   <ngx-datatable class=" boxme " [rows]="rows" [scrollbarV]="false" [selectionType]="'checkbox'" [limit]="limit" (select)='onSelect($event)'

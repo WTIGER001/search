@@ -21,6 +21,7 @@ import { ResultsTableComponent } from './results-table/results-table.component';
 
 // Services
 import { ApiService } from './api.service';
+import { IntentSelectComponent } from './intent-select/intent-select.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ApiService } from './api.service';
     FilterHostComponent,
     ToggleComponent,
     SelectComponent,
-    ResultsTableComponent
+    ResultsTableComponent,
+    IntentSelectComponent
   ],
   imports: [
     BrowserModule,
