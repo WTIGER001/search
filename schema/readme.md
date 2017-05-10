@@ -87,13 +87,16 @@ Used in :
 | BetweenSpinner| 2 Spinners                        | between           | number            |
 | Scale         | slider bar                        | =, >,>=,<, <=     | number            |
 | MultipleText  | textarea                          | in                | text              |
-| Select        | textarea                          | in                | text              |
-| Select2       | textarea                          | in                | text              |
-| Checkgroup    | textarea                          | in                | text              |
-| Radiogroup    | textarea                          | in                | text              |
-| Typeahead?    | textarea                          | in                | text              |
-| GeospatialBox | textarea                          | in                | text              |
-| GeospatialRadius| textarea                          | in                | text              |
-| GeospatialShape| textarea                          | in                | text              |
-| GeospatialMapBounds| textarea                          | in                | text              |
-| LastN         | textarea                          | in                | text              |
+| Select        | Select Control (select 1)         | =                 | text              |
+| Select2       | JIRA like multiselect             | in                | text              |
+| Checkgroup    | List of Checkboxes (Select many)  | in                | text              |
+| Radiogroup    | List of radios (Select 1)         | =                 | text              |
+| Typeahead?    | Select 1                          | =                 | text              |
+| GeospatialBox | Box                               | box               | Geo               |
+| GeospatialRadius| radius selector                 | radius            | Geo               |
+| GeospatialShape| shape selector                   | shape             | Geo               |
+| GeospatialMapBounds| map                          | box               | Geo               |
+| LastN         | text with units                   | lastn             | DateTime          |
+
+
+
