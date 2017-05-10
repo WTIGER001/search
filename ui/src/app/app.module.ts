@@ -22,6 +22,10 @@ import { ResultsTableComponent } from './results-table/results-table.component';
 // Services
 import { ApiService } from './api.service';
 import { IntentSelectComponent } from './intent-select/intent-select.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
+import { SpinnerComponent } from './filters/spinner/spinner.component';
+import { DatetimeRangeComponent } from './filters/datetime-range/datetime-range.component';
+import { CheckGroupComponent } from './filters/check-group/check-group.component';
 
 
 @NgModule({
@@ -35,7 +39,11 @@ import { IntentSelectComponent } from './intent-select/intent-select.component';
     ToggleComponent,
     SelectComponent,
     ResultsTableComponent,
-    IntentSelectComponent
+    IntentSelectComponent,
+    UserMenuComponent,
+    SpinnerComponent,
+    DatetimeRangeComponent,
+    CheckGroupComponent
   ],
   imports: [
     BrowserModule,

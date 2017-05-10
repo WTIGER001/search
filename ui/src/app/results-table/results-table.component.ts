@@ -9,14 +9,39 @@ import { Query } from '../swagger/models'
   styleUrls: ['./results-table.component.css']
 })
 export class ResultsTableComponent implements OnInit {
-
+  checkColumn
   rows = []
   selected = []
   limit = 10
   actionsEnabled = false
+  columns = []
   @Input() q: Query
 
   constructor(private _api: ApiService) {
+    this.checkColumn = {
+      width: 30,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      headerCheckboxable: true,
+      checkboxable: true
+    }
+
+    this._api.cfg.subscribe(cfg => {
+      let newC = []
+      newC.push(this.checkColumn)
+      cfg.columns.forEach(c => {
+        newC.push({
+          prop: c.field
+        })
+      })
+      this.columns.splice(0, this.columns.length)
+      this.columns.push(...newC)
+      console.log(JSON.stringify(this.columns));
+
+    })
+
     this._api.results.subscribe(r => {
       this.rows.splice(0, this.rows.length)
       this.rows.push(...r)

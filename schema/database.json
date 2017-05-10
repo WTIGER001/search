@@ -54,31 +54,31 @@
         "defaultConfiguration": "ba622de0-5600-4fac-a9bb-1cee633eec25"
     }],
     "datafields": [{
-            "id": "catalog.standard.collectiondate",
+            "id": "balance",
             "catalog-id": "/meta-data/collection-date",
-            "label": "Collection Date",
-            "type": "DateTime",
-            "description": "",
+            "label": "Balance",
+            "type": "Number",
+            "description": "Balance of the account",
             "filter": {
                 "control": "Text",
                 "order": 100,
                 "default-value": {
-                    "operator": "Last N",
-                    "value": "1",
-                    "unit": "Weeks"
+                    "operator": "between",
+                    "value": "0",
+                    "value2": "4000"
                 }
             },
             "column": {
                 "visible": true,
-                "order": 100,
+                "order": 106,
                 "sortable": true,
-                "comparator": "DateTime"
+                "comparator": "Number"
             }
         },
         {
-            "id": "catalog.standard.country",
-            "catalog-id": "/meta-data/country",
-            "label": "Country",
+            "id": "name",
+            "catalog-id": "name",
+            "label": "Name",
             "type": "string",
             "description": "",
             "enumeration": "",
@@ -94,9 +94,9 @@
             }
         },
         {
-            "id": "catalog.standard.target",
-            "catalog-id": "/meta-data/target",
-            "label": "Target",
+            "id": "about",
+            "catalog-id": "about",
+            "label": "About",
             "type": "string",
             "description": "",
             "enumeration": "",
@@ -112,9 +112,27 @@
             }
         },
         {
-            "id": "catalog.standard.filetype",
-            "catalog-id": "/datatype",
-            "label": "Target",
+            "id": "registered",
+            "catalog-id": "registered",
+            "label": "Registered Date",
+            "type": "datetime",
+            "description": "",
+            "enumeration": "",
+            "filter": {
+                "control": "DateTimeRange",
+                "order": 104
+            },
+            "column": {
+                "visible": true,
+                "order": 104,
+                "sortable": true,
+                "comparator": "string"
+            }
+        },
+        {
+            "id": "address",
+            "catalog-id": "address",
+            "label": "Address",
             "type": "string",
             "description": "",
             "enumeration": "",
@@ -130,9 +148,9 @@
             }
         },
         {
-            "id": "catalog.standard.classfication",
-            "catalog-id": "meta.classification.marking",
-            "label": "Classification",
+            "id": "email",
+            "catalog-id": "email",
+            "label": "Email",
             "type": "string",
             "description": "",
             "enumeration": "",
@@ -144,18 +162,148 @@
                 "visible": true,
                 "order": 104,
                 "sortable": true,
-                "comparator": "string"
+                "comparator": "string",
+                "renderer": "DownloadLink"
             }
         },
         {
-            "id": "catalog.standard.download",
-            "catalog-id": "meta.source.uri",
-            "label": "Classification",
+            "id": "latitude",
+            "catalog-id": "latitude",
+            "label": "Latitude",
+            "type": "number",
+            "description": "",
+            "enumeration": "",
+            "filter": {
+                "control": "Text",
+                "order": 104
+            },
+            "column": {
+                "visible": true,
+                "order": 104,
+                "sortable": true,
+                "comparator": "string",
+                "renderer": "DownloadLink"
+            }
+        },
+        {
+            "id": "Longitude",
+            "catalog-id": "Longitude",
+            "label": "Longitude",
+            "type": "number",
+            "description": "",
+            "enumeration": "",
+            "filter": {
+                "control": "Text",
+                "order": 104
+            },
+            "column": {
+                "visible": true,
+                "order": 104,
+                "sortable": true,
+                "comparator": "string",
+                "renderer": "DownloadLink"
+            }
+        },
+        {
+            "id": "company",
+            "catalog-id": "company",
+            "label": "Company",
             "type": "string",
             "description": "",
             "enumeration": "",
             "filter": {
                 "control": "Text",
+                "order": 104
+            },
+            "column": {
+                "visible": true,
+                "order": 104,
+                "sortable": true,
+                "comparator": "string",
+                "renderer": "DownloadLink"
+            }
+        },
+        {
+            "id": "guid",
+            "catalog-id": "guid",
+            "label": "ID",
+            "type": "string",
+            "description": "",
+            "enumeration": "",
+            "filter": {
+                "control": "Text",
+                "order": 104
+            },
+            "column": {
+                "visible": true,
+                "order": 104,
+                "sortable": true,
+                "comparator": "string",
+                "renderer": "DownloadLink"
+            }
+        },
+        {
+            "id": "gender",
+            "catalog-id": "gender",
+            "label": "Gender",
+            "type": "string",
+            "description": "",
+            "enumeration": "",
+            "filter": {
+                "control": "checkgroup",
+                "order": 104
+            },
+            "column": {
+                "visible": true,
+                "order": 104,
+                "sortable": true,
+                "comparator": "string",
+                "renderer": "DownloadLink"
+            }
+        },
+        {
+            "id": "eyeColor",
+            "catalog-id": "eyeColor",
+            "label": "Eye Color",
+            "type": "string",
+            "description": "",
+            "enumeration": "",
+            "filter": {
+                "control": "select2",
+                "order": 104
+            },
+            "column": {
+                "visible": true,
+                "order": 104,
+                "sortable": true,
+                "comparator": "string",
+                "renderer": "DownloadLink"
+            }
+        },
+        {
+            "id": "picture",
+            "catalog-id": "picture",
+            "label": "Picture",
+            "type": "url",
+            "description": "",
+            "enumeration": "",
+            "column": {
+                "visible": true,
+                "order": 104,
+                "sortable": true,
+                "comparator": "string",
+                "renderer": "Image"
+            }
+        },
+        {
+            "id": "age",
+            "catalog-id": "age",
+            "label": "Age",
+            "type": "number",
+            "description": "",
+            "enumeration": "",
+            "filter": {
+                "control": "between",
                 "order": 104
             },
             "column": {
@@ -182,41 +330,37 @@
             50
         ],
         "filters": [{
-            "datafieldId": "catalog.standard.collectiondate",
-            "label": "Collection Date",
-            "editable": true,
-            "visible": true,
+            "datafieldId": "name",
+            "label": "Name",
             "order": 100,
             "control": "text"
         }, {
-            "datafieldId": "catalog.standard.collectiondate2",
-            "label": "Collection Date2",
-            "editable": true,
-            "visible": true,
+            "datafieldId": "age",
             "order": 101,
-            "control": "toggle"
+            "label": "Age",
+            "control": "spinner"
         }, {
-            "datafieldId": "catalog.standard.country",
-            "label": "Country",
-            "editable": true,
-            "visible": true,
-            "order": 101,
-            "control": "select"
+            "datafieldId": "eyecolor",
+            "order": 102,
+            "control": "checkgroup",
+            "label": "Eye Color"
+        }, {
+            "datafieldId": "gender",
+            "order": 103,
+            "control": "checkgroup",
+            "label": "Gender"
         }],
-        "filter-values": [{
-                "id": "catalog.standard.collectiondate",
-                "operator": "Last N",
-                "value": "4",
-                "unit": "days",
-                "control": "text"
-            },
-            {
-                "id": "catalog.standard.filetype",
-                "operator": "Equals",
-                "value": "ABC HD5"
-            }
-        ],
-        "tabular-columns": {}
+        "filter-values": [],
+        "columns": [{
+            "field": "name",
+            "order": 1
+        }, {
+            "field": "email",
+            "order": 2
+        }, {
+            "field": "gender",
+            "order": 1
+        }]
     }],
     "preferences": [{
         "id": "john",

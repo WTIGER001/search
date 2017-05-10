@@ -9,4 +9,5 @@ export class Query {
 	filterValues: FilterValue[];
 	sort: SortItem[];
 	columns: Column[];
+	text: string;
 }

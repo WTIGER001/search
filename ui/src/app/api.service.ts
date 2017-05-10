@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable, Subject } from "rxjs/Rx"
 import { Query, Results } from './swagger/models'
 import { User } from './models/user'
@@ -38,9 +38,16 @@ export class ApiService {
   }
 
   public search(q: Query) {
-    console.log("Sending Search");
-    this.http.get("http://localhost:3000/data?_page" + q.page + "&_limit" + q.limit)
-      .debounceTime(200)
+    let url = "http://localhost:3000/data";
+    url += "?_page=" + q.page
+    url += "&_limit=" + q.limit
+
+    if (q.text !== undefined && q.text.length > 0) {
+      url += "&q=" + q.text
+    }
+    console.log(url);
+
+    this.http.get(url).debounceTime(200)
       .map(r => r.json())
       .subscribe(res => {
         console.log("Got Results " + JSON.stringify(res));

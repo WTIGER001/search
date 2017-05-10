@@ -1,4 +1,4 @@
-<div class="m-2 boxme">
+<div class="m-2 boxme" *ngIf="_api.cfg | async">
 
   <nav class="navbar navbar-toggleable-md " style="border-radius:0px;">
     <span class="navbar-brand mr-auto" href="#">Results</span>
@@ -18,12 +18,7 @@
   </nav>
 
   <ngx-datatable class=" boxme " [rows]="rows" [scrollbarV]="false" [selectionType]="'checkbox'" [limit]="limit" (select)='onSelect($event)'
-    [headerHeight]="30" [footerHeight]="0">
-    <ngx-datatable-column [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" [headerCheckboxable]="true"
-      [checkboxable]="true">
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Name"></ngx-datatable-column>
-    <ngx-datatable-column name="Balance"></ngx-datatable-column>
-    <ngx-datatable-column name="Email"></ngx-datatable-column>
+    [headerHeight]="30" [footerHeight]="30" [columns]="columns">
+
   </ngx-datatable>
 </div>

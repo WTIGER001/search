@@ -39,7 +39,7 @@ export class FilterHostComponent implements AfterViewInit, OnInit {
 
     public makeFilter() {
         let f = this.filter
-        if (f == null || !f.visible) return
+        if (f == null || (f.hasOwnProperty("visible") && !f.visible)) return
 
         let controlId = f.control
 
@@ -49,16 +49,22 @@ export class FilterHostComponent implements AfterViewInit, OnInit {
             controlId = this._api.getFilterControl(id)
         }
 
+        if (controlId == null) {
+            controlId = "text"
+        }
+
         // Look up the control
         let comp = this.filterControls[controlId]
+        if (comp != null) {
+            // Create and init the control
+            let componentFactory = this._componentFactoryResolver.resolveComponentFactory(comp);
+            this._viewRef.clear();
+            let componentRef = this._viewRef.createComponent(componentFactory);
 
-        // Create and init the control
-        let componentFactory = this._componentFactoryResolver.resolveComponentFactory(comp);
-        this._viewRef.clear();
-        let componentRef = this._viewRef.createComponent(componentFactory);
+            // componentRef.instance.value = "HI"
+            // Set the value
+        }
 
-        // componentRef.instance.value = "HI"
-        // Set the value
 
     }
 }

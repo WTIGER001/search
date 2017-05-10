@@ -52,6 +52,20 @@ Value Types
 * Multiple Value (Between, In, etc.)
 * Wierd - Geospatial
 
+Really need to figure out how to do choices
+* Statically configure in the data field definition and propagate to the Filter
+* Statically Configure in another referenced field
+* Dynamically generate from ES
+* assign Icons per choices
+* Use modified option objects (+icon, tooltip)
+
+Used in :
+* Select
+* Select2
+* Checkgroup
+* Radiogroup
+* Typeahead?
+
 ## Top Level Objects
 
 * Query
@@ -60,4 +74,26 @@ Value Types
 * Results
 * Item Selection
 
-## Query Flow
+## Filters
+
+| Type          | Description                       | Operator(s)       | DataTypes         |
+|---------------|-----------------------------------|-------------------|-------------------|
+| Text          | Simple Text (Can limit to number )| =, >,>=,<, <=,~   | string, number    |
+| Spinner       | Choose a single, integer number   | =, >,>=,<, <=     | number            |
+| Date          | Calendar                          | =, >,>=,<, <=     | Date              |
+| DateTime      | Calenedar and Time                | =, >,>=,<, <=     | DateTime          |
+| DateTimeRange | 2 dates and times                 | Between           | Date, DateTime    |
+| BetweenText   | 2 TExts (for number)              | between           | number            |
+| BetweenSpinner| 2 Spinners                        | between           | number            |
+| Scale         | slider bar                        | =, >,>=,<, <=     | number            |
+| MultipleText  | textarea                          | in                | text              |
+| Select        | textarea                          | in                | text              |
+| Select2       | textarea                          | in                | text              |
+| Checkgroup    | textarea                          | in                | text              |
+| Radiogroup    | textarea                          | in                | text              |
+| Typeahead?    | textarea                          | in                | text              |
+| GeospatialBox | textarea                          | in                | text              |
+| GeospatialRadius| textarea                          | in                | text              |
+| GeospatialShape| textarea                          | in                | text              |
+| GeospatialMapBounds| textarea                          | in                | text              |
+| LastN         | textarea                          | in                | text              |

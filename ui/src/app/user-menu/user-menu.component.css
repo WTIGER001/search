@@ -1,0 +1,10 @@
+.btn {
+  border: none;
+  background: transparent;
+  color: white;
+}
+
+.column2 {
+  column-count: 2;
+  margin-left: -120px;
+}

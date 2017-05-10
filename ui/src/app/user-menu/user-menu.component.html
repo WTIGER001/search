@@ -1,0 +1,26 @@
+<div *ngIf="u" ngbDropdown class="d-inline-block ">
+  <button class="btn" id="dropdownUser" ngbDropdownToggle><i class="fa fa-user" aria-hidden="true"></i> {{u.name}}</button>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUser">
+    <button class="dropdown-item" (click)="showAboutMe(content)">About Me...</button>
+    <div class="dropdown-divider"></div>
+    <button class="dropdown-item">Manage Configurations...</button>
+  </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+    <h4 class="modal-title"> {{u.name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body column2">
+    <p class="text-right">Id:</p>
+    <p class="text-right">Email:</p>
+    <p class="text-right">Organization:</p>
+    <p>{{u.id}}</p>
+    <p>{{u.email}}</p>
+    <p>{{u.organization}}</p>
+  </div>
+</ng-template>
