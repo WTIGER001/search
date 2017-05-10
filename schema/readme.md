@@ -99,4 +99,7 @@ Used in :
 | LastN         | text with units                   | lastn             | DateTime          |
 
 
+## User Preferences
 
+* Configurations
+* Shapes (for searching)
